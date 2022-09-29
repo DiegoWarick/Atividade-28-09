@@ -1,0 +1,153 @@
+<html>
+<head>
+    <title>Jogo Da Velha</title>
+    <style>
+      .fundo{
+        background-image: linear-gradient(90deg,rgb(0, 155, 226), rgb(189, 0, 57));
+        height: 100vh;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+    }
+    .jogo{
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.3);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 15px;
+        border-radius: 15px;
+    }
+    .botao{
+        width: 75px;
+        height: 75px;
+        font-size: 20px;
+        cursor: pointer;
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        margin: 3px;
+        border-radius: 15px;
+        border-width: 2px;
+    }
+    .botao:hover{
+        background-color: rgba(255, 255, 255, 0.6);
+    }
+    .rrbotao:hover{
+        background-color: rgba(255, 255, 255, 0.6);
+    }
+    .rrbotao{
+        width: 200px;
+        height: 50px;
+        font-size: 25px;
+        cursor: pointer;
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        margin: 3px;
+        border-radius: 15px;
+        border-width: 2px;
+    }
+    </style>
+
+    
+</head>
+<body class="fundo">
+    <h1>JOGO DA VELHA</h1>
+    <h2>Diego Warick</h2>
+    <h2>CTII 148</h2>
+<div class="jogo">
+<table>
+    <tr>
+        <td>
+            <button id="1" class="botao" onclick="clicar('1')"></button>
+        </td>
+        <td>
+            <button id="2" class="botao" onclick="clicar('2')"></button>
+        </td>
+        <td>
+            <button id="3" class="botao" onclick="clicar('3')"></button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button id="4" class="botao" onclick="clicar('4')"></button>
+        </td>
+        <td>
+            <button id="5" class="botao" onclick="clicar('5')"></button>
+        </td>
+        <td>
+            <button id="6" class="botao" onclick="clicar('6')"></button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button id="7" class="botao" onclick="clicar('7')"></button>
+        </td>
+        <td>
+            <button id="8" class="botao" onclick="clicar('8')"></button>
+        </td>
+        <td>
+            <button id="9" class="botao" onclick="clicar('9')"></button>
+        </td>
+    </tr>
+</table>
+<button id="rr" class="rrbotao" onclick="reiniciar()">REINICIAR</button>
+</div>
+<script>
+    var v = 0, b, z = 0;
+    function clicar(id)
+    {
+        b = document.getElementById(id);
+        if (!b.innerHTML && z == 0){
+        if (v == 0) {
+        document.getElementById(id).innerHTML = 'X';
+        v = 1;
+    } else{
+        document.getElementById(id).innerHTML = 'O';
+        v = 0;
+    }
+    var a1 = document.getElementById("1").innerHTML;
+        var a2 = document.getElementById("2").innerHTML;
+        var a3 = document.getElementById("3").innerHTML;
+        var b1 = document.getElementById("4").innerHTML;
+        var b2 = document.getElementById("5").innerHTML;
+        var b3 = document.getElementById("6").innerHTML;
+        var c1 = document.getElementById("7").innerHTML;
+        var c2 = document.getElementById("8").innerHTML;
+        var c3 = document.getElementById("9").innerHTML;
+        var vencedor;
+
+        if ((((a1 == a2) && (a1 == a3)) || ((a1 == b1) && (a1 == c1)) || ((a1 == b2) && (a1 == c3))) && ((a1 == 'X') || (a1 == 'O'))) {
+            vencedor = a1;
+            window.alert(vencedor + " venceu!");
+            z = 1;
+        }
+        if ((((b1 == b2) && (b1 == b3)) || ((b2 == a2) && (b2 == c2)) || ((b2 == c1) && (a3 == c1))) && ((b2 == 'X') || (b2 == 'O'))) {
+            vencedor = b2;
+            window.alert(vencedor + " venceu!");
+            z = 1;
+        }
+        if ((((c3 == b3) && (c3 == a3)) || ((c3 == c1) && (c2 == c1))) && ((c3 == 'X') || (c3 == 'O'))) {
+            vencedor = c3;
+            window.alert(vencedor + " venceu!");
+            z = 1;
+        }
+
+        }
+    }
+    function reiniciar()
+    {
+        document.getElementById("1").innerHTML = '';
+        document.getElementById("2").innerHTML = '';
+        document.getElementById("3").innerHTML = '';
+        document.getElementById("4").innerHTML = '';
+        document.getElementById("5").innerHTML = '';
+        document.getElementById("6").innerHTML = '';
+        document.getElementById("7").innerHTML = '';
+        document.getElementById("8").innerHTML = '';
+        document.getElementById("9").innerHTML = '';
+        v = 0;
+        z = 0;
+    }
+</script>  
+</body>
+</html>
